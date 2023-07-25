@@ -32,6 +32,10 @@ public class ConnectionListener implements ServletContextListener{
 			
 			PreparedStatement psouttime= cn.prepareStatement("select outtime from timeinfo where intime='Not in yet' and eid = ?");
 			context.setAttribute("outtime", psouttime);
+			
+			PreparedStatement pscurrentdate= cn.prepareStatement("select * from timeinfo where date=?");
+			context.setAttribute("currentdate", pscurrentdate);
+			
 			System.out.println("connection created");
 			
 		}
