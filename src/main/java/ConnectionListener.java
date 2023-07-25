@@ -27,6 +27,11 @@ public class ConnectionListener implements ServletContextListener{
 			PreparedStatement psstatus = cn.prepareStatement("update employee set status = ? where eid = ?");
 			context.setAttribute("status", psstatus);
 			
+			PreparedStatement psinupdate = cn.prepareStatement("update timeinfo set intime=?,totaltime=? where intime='Not in yet' and eid = ?");
+			context.setAttribute("inupdate", psinupdate);
+			
+			PreparedStatement psouttime= cn.prepareStatement("select outtime from timeinfo where intime='Not in yet' and eid = ?");
+			context.setAttribute("outtime", psouttime);
 			System.out.println("connection created");
 			
 		}
