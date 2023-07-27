@@ -34,7 +34,13 @@ public class ConnectionListener implements ServletContextListener{
 			context.setAttribute("outtime", psouttime);
 			
 			PreparedStatement pscurrentdate= cn.prepareStatement("select * from timeinfo where date=?");
-			context.setAttribute("currentdate", pscurrentdate);
+			context.setAttribute("date", pscurrentdate);
+			
+			PreparedStatement psdatebetween = cn.prepareStatement("select * from timeinfo where date between ? and ?");
+			context.setAttribute("dateb", psdatebetween);
+			
+			PreparedStatement pslist1 = cn.prepareStatement("select eid,name from employee");
+			context.setAttribute("pslist1", pslist1);
 			
 			System.out.println("connection created");
 			

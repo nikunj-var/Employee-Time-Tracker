@@ -2,19 +2,20 @@
 <%@ include file='../../navbar.jsp' %>
 <html>
  <body onload='makeActive("datewise")'>
- <%
- 	PreparedStatement ps = (PreparedStatement)application.getAttribute("date");
- 	ps.setObject(1,LocalDate.now());
- 	ResultSet rst = ps.executeQuery();
- %>
-  
+	<%
+	PreparedStatement ps = (PreparedStatement)application.getAttribute("date");
+	String date = request.getParameter("date");
+	LocalDate ld = LocalDate.parse(date);
+	ps.setObject(1,ld);
+	ResultSet rst = ps.executeQuery();
+	%>
   <div class='dvv'>
-     <label class='hdu'>Report of current date</label>
+     <label class='hdu'>Report of date <%=date%></label>
   </div>
   <div class='container'>
    <div class='card mx-auto'>
      <div class='card-body'>
-      <%if(rst.next()){%>
+     <%if(rst.next()){%>
       <div class='table scrollit'>
        <table class='table table-hover'>
         <thead>
@@ -51,10 +52,9 @@
     	<%   
       }
       %>
+     </div>
    </div> 
   </div>
-  </div>
-  
   <div style='text-align: center;margin-top:10px'>
    <input type='button' value='Back' onclick='history.back()' class='btr' style='background-color:orange'>
   </div>

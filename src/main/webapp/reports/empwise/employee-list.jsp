@@ -1,16 +1,15 @@
 <%@ include file="../../navbar.jsp" %>
 <html>
- <body onload="makeActive('in')">
+ <body onload="makeActive('empwise')">
  <form action="update-intime.jsp">
   <div class='dv'>
-   <label class='hdu'>Update employee in time</label>
+   <label class='hdu'>View Reports Employee Wise</label>
   </div>
   <div class='dv'>
    <select name="eid" id="eid" class='la' onchange="checkEmployee(this)">
    	 <option value="-1">Select Employee</option>
    	 <%
-	   	PreparedStatement ps = (PreparedStatement)application.getAttribute("pslist");
-	   	ps.setString(1,"out");
+	   	PreparedStatement ps = (PreparedStatement)application.getAttribute("pslist1");
 	   	ResultSet rst = ps.executeQuery();
 	   	while(rst.next()){
    		%>
@@ -19,6 +18,7 @@
    	}
    	
    %>
+   	<option >All</option>
    </select>
    
   </div>
