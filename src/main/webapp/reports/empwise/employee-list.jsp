@@ -1,7 +1,7 @@
 <%@ include file="../../navbar.jsp" %>
 <html>
  <body onload="makeActive('empwise')">
- <form action="update-intime.jsp">
+ <form action="choose-date.jsp">
   <div class='dv'>
    <label class='hdu'>View Reports Employee Wise</label>
   </div>
@@ -13,7 +13,7 @@
 	   	ResultSet rst = ps.executeQuery();
 	   	while(rst.next()){
    		%>
-   		<option value="<%=rst.getString(1) %>"><%=rst.getString(2)%>(<%=rst.getString(1) %>)</option>
+   		<option value="<%=rst.getString(2)  %>"><%=rst.getString(2)%>(<%=rst.getString(1) %>)</option>
    		<% 
    	}
    	

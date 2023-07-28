@@ -1,14 +1,26 @@
 <%@page import="java.time.LocalDate"%>
 <%@ include file="../../navbar.jsp" %>
 <html>
-  <body onload="makeActive('datewise')">
+  <body onload="makeActive('empwise')">
   <% 
   	LocalDate date = LocalDate.now();
   %>
   <div class='dvv'>
-    <label class='lahu'>View date wise report</label>
+    <label class='lahu'>View date wise report of <%=request.getParameter("eid") %></label>
   </div>
    <table class='ta'>
+   <tr>
+     <td class='pd'>
+      <form action='all.jsp' method="post">
+       <table class='cdta'>
+        <tr>
+         <td>See All</td>
+         <td align="right"><button class='cdbt'>GO</button></td>
+        </tr>
+       </table>
+      </form>
+     </td>
+    </tr>
     <tr>
      <td class='pd'>
       <form action='current-date.jsp' method="post">
